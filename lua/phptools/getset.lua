@@ -33,7 +33,7 @@ function M.generate_getset(mode)
     local line1 = vim.api.nvim_buf_get_mark(0, "<")[1]
     local line2 = vim.api.nvim_buf_get_mark(0, ">")[1]
     local lines = vim.api.nvim_buf_get_lines(0, line1 - 1, line2, true)
-    local re = vim.regex("private [a-zA-Z]\\+ \\$[a-zA-Z]\\+;")
+    local re = vim.regex("private ?\\?[a-zA-Z]\\+ \\$[a-zA-Z]\\+;")
     lines = vim.tbl_filter(
       function (line)
         return re:match_str(line)
