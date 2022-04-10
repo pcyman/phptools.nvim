@@ -63,7 +63,7 @@ end
 local function get_vars_with_types(php_ts_root)
   local query = vim.treesitter.parse_query("php", [[
   (property_declaration 
-      type: (type_list (named_type) @var_type)
+      type: (union_type (named_type) @var_type)
       (property_element
           (variable_name (name) @var_name))
   )
@@ -98,7 +98,7 @@ local function get_constructor_vars(php_ts_root)
       name: (name) @method_name (#eq? @method_name "__construct")
       parameters: (formal_parameters (
           (simple_parameter 
-              type: (type_list (named_type (name) @var_type))
+              type: (union_type (named_type (name) @var_type))
               name: (variable_name (name) @var_name)
           )
       ))
