@@ -50,7 +50,7 @@ local function build_unit_test_table(vars, class, constructor_vars, imports, nam
     table.insert(unit_test, "")
     table.insert(unit_test, "    private function get" .. var.var_type .. "Mock(): ObjectProphecy")
     table.insert(unit_test, "    {")
-    table.insert(unit_test, "        /** @var " .. var.var_type .. "|ObjectProphecy */")
+    table.insert(unit_test, "        /** @var " .. var.var_type .. "|ObjectProphecy $mock */")
     table.insert(unit_test, "        $mock = $this->prophesize(" .. var.var_type .. "::class);")
     table.insert(unit_test, "")
     table.insert(unit_test, "        return $mock;")
